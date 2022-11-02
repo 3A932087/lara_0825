@@ -17,12 +17,12 @@
     </head>
     <body>
         <!-- Navigation-->
-        @includ('layout.partials.navigation')
+        @include('layouts.partials.navigation')
         <!-- Page Header-->
         <!-- Main Content-->
         @yield('content')
         <!-- Footer-->
-        @include('layout.partials.footer')
+        @include('layouts.partials.footer')
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
