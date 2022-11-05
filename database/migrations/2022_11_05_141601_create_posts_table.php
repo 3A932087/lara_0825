@@ -17,7 +17,8 @@ return new class extends Migration
             $table->bigInteger('id');
             $table->string('title');
             $table->text('content');
-
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();//->default(\DB::raw('CURRENT_TIMESTAMP'))
         });
     }
 
