@@ -13,12 +13,13 @@ use App\Models\Post;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//$posts=Post::all(); //取出posts資料表所有貼文
+//$posts=Post::find(1); //找尋posts資料表id=1的貼文
 
 Route::get('/', function () {
-    Post::create([
-        'title' => 'created title',
-        'content' => 'created content',
-    ]);
+        //查詢符合條件(id<10)的貼文，排序後，取出
+    $posts=Post::where('id','<',10)->orderby('id','DESC')->get();
+    dd($posts);
 });
 
 Route::get('posts',[PostController::class, 'index'])
