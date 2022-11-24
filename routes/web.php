@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Models\Post;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +15,10 @@ use App\Http\Controllers\PostController;
 */
 
 Route::get('/', function () {
-    return redirect('posts');
+    $post = new Post(); //先產生Post的物件$post,$post將代表posts資料表的偏貼文
+    $post ->title = 'test title';   //指定貼文的title
+    $post ->content = 'test content ';  //指定貼文的content
+    $post ->save(); //將新貼文$post存入posts資料表
 });
 
 Route::get('posts',[PostController::class, 'index'])
