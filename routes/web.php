@@ -17,8 +17,11 @@ use App\Models\Post;
 //$posts=Post::find(1); //找尋posts資料表id=1的貼文
 
 Route::get('/', function () {
-    //Post::destroy(2);
-    Post::destroy(3,5,7);
+    $allPosts =Post::all(); //多筆貼文的集合
+    dd($allPosts);
+    //取得is_feature欄位值為1的資料集合
+    $featuredPosts = Post::where('is_feature',1)->get();    //多筆貼文的集合
+    dd($featuredPosts);
 });
 
 Route::get('posts',[PostController::class, 'index'])
