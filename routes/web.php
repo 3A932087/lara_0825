@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Models\Post;
+use App\Models\Comment;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,11 +16,16 @@ use App\Models\Post;
 */
 
 Route::get('/', function () {
-    $fourthPost = Post::find(4); //單一筆貼文
-    dd($fourthPost);
+    $post = Post::find(4);
+    echo '標題：'.$post->title.'<br>';
+    echo '內容：'.$post->content.'<br>';
+    echo '--------------------------'.'<br>';
+    $comments = $post->comments()->get();   //$post->comments
+    foreach ($comments as $comment){
+        echo '留言：'.$comment->content.'<br>';
+        echo '------------------------------'.'<br>';
+    }
 
-    $lastPost = Post::orderBy('id','DESC')->fitst();
-    dd($lastPost);
 });
 
 Route::get('posts',[PostController::class, 'index'])
