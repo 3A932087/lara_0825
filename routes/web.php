@@ -8,7 +8,7 @@ use App\Models\Comment;
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
+|s
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
@@ -16,16 +16,13 @@ use App\Models\Comment;
 */
 
 Route::get('/', function () {
-    $post = Post::find(4);
-    echo '標題：'.$post->title.'<br>';
-    echo '內容：'.$post->content.'<br>';
-    echo '--------------------------'.'<br>';
-    $comments = $post->comments()->get();   //$post->comments
-    foreach ($comments as $comment){
-        echo '留言：'.$comment->content.'<br>';
-        echo '------------------------------'.'<br>';
-    }
-
+    $comment=Comment::find(2);
+    echo $comment->content.'<br>';
+    echo '******************'.'<br>';
+    $post = $comment->post()->first(); //$comment->post
+    echo $post->id.'<br>';
+    echo $post->title.'<br>';
+    echo $post->content.'<br>';
 });
 
 Route::get('posts',[PostController::class, 'index'])
