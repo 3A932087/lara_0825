@@ -17,10 +17,8 @@ use App\Models\Post;
 //$posts=Post::find(1); //找尋posts資料表id=1的貼文
 
 Route::get('/', function () {
-    $post=Post::find(2);
-    $post->title='saved title';
-    $post->content='saved content';
-    $post->save();
+    $post=Post::find(1);
+    $post->delete();
 });
 
 Route::get('posts',[PostController::class, 'index'])
