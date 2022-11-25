@@ -17,9 +17,11 @@ use App\Models\Post;
 //$posts=Post::find(1); //找尋posts資料表id=1的貼文
 
 Route::get('/', function () {
-        //查詢符合條件(id<10)的貼文，排序後，取出
-    $posts=Post::where('id','<',10)->orderby('id','DESC')->get();
-    dd($posts);
+    $post=Post::find(1);
+    $post->update([
+       'title'=>'updated title',
+       'content'=>'updated content',
+    ]);
 });
 
 Route::get('posts',[PostController::class, 'index'])
