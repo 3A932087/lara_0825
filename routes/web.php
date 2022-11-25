@@ -13,15 +13,13 @@ use App\Models\Post;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//$posts=Post::all(); //取出posts資料表所有貼文
-//$posts=Post::find(1); //找尋posts資料表id=1的貼文
 
 Route::get('/', function () {
-    $allPosts =Post::all(); //多筆貼文的集合
-    dd($allPosts);
-    //取得is_feature欄位值為1的資料集合
-    $featuredPosts = Post::where('is_feature',1)->get();    //多筆貼文的集合
-    dd($featuredPosts);
+    $fourthPost = Post::find(4); //單一筆貼文
+    dd($fourthPost);
+
+    $lastPost = Post::orderBy('id','DESC')->fitst();
+    dd($lastPost);
 });
 
 Route::get('posts',[PostController::class, 'index'])
